@@ -5,48 +5,69 @@
 command_timeout = 300
 
 # 新しい行を追加して見やすくする
-add_newline = true
+add_newline = false
 
 # フォーマット設定 - シンプルで適応的なレイアウト
 format = """
-$directory$git_branch$git_status$golang$nodejs$python$terraform
-$character"""
+$os\
+$username\
+$directory\
+$git_branch\
+$git_status\
+$nix_shell\
+$devbox\
+$nodejs\
+$go\
+$character
+"""
 
+# ---- OS / User / Host --------------------------------------
+[os]
+disabled = false
+format = "[$symbol]($style) "
+style = "bold white"
+
+[os.symbols]
+Ubuntu = "🟧"
+
+[username]
+show_always = true
+style_user = "bold green"
+format = "[$user]($style)@"
+
+# ---- Directory ---------------------------------------------
 [directory]
-truncation_length = 3
 truncate_to_repo = true
-format = "[$path]($style)[$read_only]($read_only_style) "
-style = "bold cyan"
+truncation_length = 3
+style = "bold blue"
 
+# ---- Git ---------------------------------------------------
 [git_branch]
-format = "on [$symbol$branch]($style) "
-symbol = " "
+symbol = " "
 style = "bold purple"
 
 [git_status]
-format = '([\[$all_status$ahead_behind\]]($style) )'
-style = "bold yellow"
+disabled = true   # ← WSLでは重いので切る
 
-[golang]
-format = "via [$symbol($version )]($style)"
-symbol = "🐹 "
-style = "bold cyan"
+# ---- Nix / Devbox ------------------------------------------
+[nix_shell]
+symbol = ""
+format = " [$symbol]($style)"
 
+[devbox]
+symbol = "📦"
+format = " [$symbol]($style)"
+
+# ---- Languages ---------------------------------------------
 [nodejs]
-format = "via [$symbol($version )]($style)"
-symbol = " "
-style = "bold green"
+symbol = "⬢ "
+format = " [$symbol$version]($style)"
 
-[python]
-format = 'via [$symbol$pyenv_prefix($version )(\($virtualenv\) )]($style)'
-symbol = "🐍 "
-style = "bold yellow"
+[go]
+symbol = "🐹 "
+format = " [$symbol$version]($style)"
 
-[terraform]
-format = "via [$symbol$workspace]($style) "
-symbol = "💠 "
-style = "bold purple"
-
+# ---- Prompt -----------------------------------------------
 [character]
-success_symbol = "[❯](bold green)"
-error_symbol = "[❯](bold red)"
+success_symbol = "> "
+error_symbol = " ✗ "
