@@ -6,28 +6,7 @@ case $- in
       *) return;;
 esac
 
-# devbox global shellenv の設定
-# devbox がインストールされている場合のみ実行
-if command -v devbox >/dev/null 2>&1; then
-  eval "$(devbox global shellenv)"
-fi
 
-# fzf の設定
-# fzf がインストールされている場合、履歴検索を有効化
-if command -v fzf >/dev/null 2>&1; then
-  # Ctrl+R で履歴検索
-  # \C-x1\e^\er: 現在の行をクリアしてカスタム関数を呼び出すためのキーシーケンス
-  bind '"\C-r": "\C-x1\e^\er"'
-  bind -x '"\C-x1": __fzf_history'
-  
-  __fzf_history() {
-    local selected
-    # 履歴を逆順で取得し、重複を除去してfzfに渡す
-    selected=$(history | tac | awk '!seen[$0]++ {print substr($0, 8)}' | fzf --no-sort --query "$READLINE_LINE")
-    READLINE_LINE="${selected}"
-    READLINE_POINT=${#READLINE_LINE}
-  }
-fi
 
 # 基本的な環境変数
 export EDITOR=vi
@@ -51,13 +30,17 @@ if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
 
-# 便利なエイリアス
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+if [ -f ~/.config/repo.env ]; then
+  . ~/.config/repo.env
+fi
 
-# Starship prompt の初期化
-# starship がインストールされている場合のみ実行
-if command -v starship >/dev/null 2>&1; then
+if command -v starship >/dev/null 2>&1 && [[ -z "$STARSHIP_INITIALIZED" ]]; then
+  export STARSHIP_INITIALIZED=1
   eval "$(starship init bash)"
+fi
+
+# fzf の設定
+# fzf がインストールされている場合、履歴検索を有効化
+if command -v fzf >/dev/null 2>&1; then
+  eval "$(fzf --bash)"
 fi

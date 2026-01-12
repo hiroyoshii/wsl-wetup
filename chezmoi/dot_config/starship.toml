@@ -9,26 +9,19 @@ add_newline = false
 
 # フォーマット設定 - シンプルで適応的なレイアウト
 format = """
-$os\
 $username\
 $directory\
 $git_branch\
 $git_status\
 $nix_shell\
-$devbox\
 $nodejs\
-$go\
 $character
 """
 
 # ---- OS / User / Host --------------------------------------
-[os]
-disabled = false
-format = "[$symbol]($style) "
-style = "bold white"
-
-[os.symbols]
-Ubuntu = "🟧"
+[bash]
+# Ctrl+R で Starship の履歴検索を無効にする
+# bashならデフォルトではStarshipがキーを変えることは少ないが念のため
 
 [username]
 show_always = true
@@ -54,20 +47,13 @@ disabled = true   # ← WSLでは重いので切る
 symbol = ""
 format = " [$symbol]($style)"
 
-[devbox]
-symbol = "📦"
-format = " [$symbol]($style)"
-
 # ---- Languages ---------------------------------------------
 [nodejs]
 symbol = "⬢ "
 format = " [$symbol$version]($style)"
 
-[go]
-symbol = "🐹 "
-format = " [$symbol$version]($style)"
 
 # ---- Prompt -----------------------------------------------
 [character]
-success_symbol = "> "
-error_symbol = " ✗ "
+success_symbol = ">"
+error_symbol = "✗"

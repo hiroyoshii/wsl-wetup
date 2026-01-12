@@ -1,1 +1,8 @@
+
+# 便利なエイリアス
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
 alias dbu='GODEBUG=netdns=go+v4only DEVBOX_PREFER_IPV4=1 devbox global update'
+alias cdw='cd ~/source/repos'
