@@ -21,9 +21,12 @@ WSL (Windows Subsystem for Linux) 環境を自動的にセットアップする�
 
 WSLの初期セットアップ時に`cloud-init.yaml`を使用：
 
+```ps1
+notepad $PWD\.cloud-init\Ubuntu-22.04.user-data
+```
+
 ```bash
-# WSL2でcloud-initが利用可能な場合
-wsl --install --distribution Ubuntu --cloud-init cloud-init.yaml
+-d Ubuntu-22.04
 ```
 
 ### 方法2: 手動セットアップ
