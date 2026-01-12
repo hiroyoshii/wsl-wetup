@@ -1,0 +1,53 @@
+# Starship プロンプト設定
+# 高速で見やすいプロンプトを提供
+
+# タイムアウトを短縮してレスポンスを改善
+command_timeout = 500
+
+# 新しい行を追加して見やすくする
+add_newline = true
+
+# フォーマット設定
+format = """
+[┌───────────────────────────────────>](bold green)
+[│](bold green)$directory$git_branch$git_status$golang$nodejs$python$terraform
+[└─>](bold green) """
+
+[directory]
+truncation_length = 3
+truncate_to_repo = true
+format = "[$path]($style)[$read_only]($read_only_style) "
+style = "bold cyan"
+
+[git_branch]
+format = "on [$symbol$branch]($style) "
+symbol = " "
+style = "bold purple"
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style) )'
+style = "bold yellow"
+
+[golang]
+format = "via [$symbol($version )]($style)"
+symbol = "🐹 "
+style = "bold cyan"
+
+[nodejs]
+format = "via [$symbol($version )]($style)"
+symbol = " "
+style = "bold green"
+
+[python]
+format = "via [$symbol$pyenv_prefix($version )(\($virtualenv\) )]($style)"
+symbol = "🐍 "
+style = "bold yellow"
+
+[terraform]
+format = "via [$symbol$workspace]($style) "
+symbol = "💠 "
+style = "bold purple"
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
