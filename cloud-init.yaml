@@ -1,9 +1,7 @@
 #cloud-config
-# WSL初期セットアップ用 cloud-init 設定ファイル
-# chezmoi を使用して dotfiles を適用し、devbox で開発ツールをインストールします
 
 users:
-  - name: hiroaki
+  - name: hiroyoshii
     sudo: ALL=(ALL) NOPASSWD:ALL
     shell: /bin/bash
 
