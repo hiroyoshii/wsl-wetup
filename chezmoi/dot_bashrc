@@ -29,6 +29,11 @@ if [ -x /usr/bin/dircolors ]; then
     alias grep='grep --color=auto'
 fi
 
+# 個別のエイリアスファイルを読み込む
+if [ -f ~/.bash_aliases ]; then
+  . ~/.bash_aliases
+fi
+
 # 便利なエイリアス
 alias ll='ls -alF'
 alias la='ls -A'

@@ -1,0 +1,1 @@
+alias devboxglobalupdate='GODEBUG=netdns=go+v4only DEVBOX_PREFER_IPV4=1 devbox global update'
