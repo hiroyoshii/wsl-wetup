@@ -12,6 +12,21 @@ if command -v devbox >/dev/null 2>&1; then
   eval "$(devbox global shellenv)"
 fi
 
+# fzf の設定
+# fzf がインストールされている場合、履歴検索を有効化
+if command -v fzf >/dev/null 2>&1; then
+  # Ctrl+R で履歴検索
+  bind '"\C-r": "\C-x1\e^\er"'
+  bind -x '"\C-x1": __fzf_history'
+  
+  __fzf_history() {
+    local selected
+    selected=$(history | sort -r -k1,1n | awk '{$1=""; print substr($0,2)}' | awk '!seen[$0]++' | fzf --tac --no-sort --query "$READLINE_LINE")
+    READLINE_LINE="${selected}"
+    READLINE_POINT=${#READLINE_LINE}
+  }
+fi
+
 # 基本的な環境変数
 export EDITOR=vi
 export VISUAL=vi
