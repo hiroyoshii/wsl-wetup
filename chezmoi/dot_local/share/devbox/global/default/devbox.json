@@ -6,6 +6,7 @@
     "firebase-tools",
     "terraform@latest",
     "google-cloud-sdk@latest",
+    "starship"
     "fzf@latest"
   ],
   "shell": {

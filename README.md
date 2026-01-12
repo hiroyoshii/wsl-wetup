@@ -98,6 +98,7 @@ exec bash
 - Google Cloud SDK
 - Firebase Tools
 - fzf (fuzzy finder for history search)
+- Starship (高速でカスタマイズ可能なプロンプト)
 
 ## ファイル構成
 
@@ -107,6 +108,8 @@ wsl-wetup/
 ├── .chezmoi.yaml.tmpl                       # chezmoi設定
 └── .chezmoi/                                # chezmoi dotfiles
     ├── dot_bashrc                           # bashrc設定
+    ├── dot_config/
+    │   └── starship.toml                    # Starship プロンプト設定
     ├── run_once_install-devbox.sh          # devboxインストールスクリプト
     └── dot_local/share/devbox/global/default/
         └── devbox.json                      # devboxグローバル設定
@@ -132,6 +135,12 @@ wsl-wetup/
 ### bashrcのカスタマイズ
 
 `.chezmoi/dot_bashrc` を編集してエイリアスや環境変数を追加できます。
+
+### Starshipプロンプトのカスタマイズ
+
+Starship はシェルプロンプトを高速かつ美しく表示します。設定は `.chezmoi/dot_config/starship.toml` で行えます。
+
+詳細は [Starship 公式ドキュメント](https://starship.rs/ja-JP/) を参照してください。
 
 ## トラブルシューティング
 
