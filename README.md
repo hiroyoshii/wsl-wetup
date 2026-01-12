@@ -75,6 +75,16 @@ exec bash
 
 このリポジトリの chezmoi 適用で、GitHub 向けの SSH 設定が `~/.ssh/config` に追加されます。
 
+## 機能
+
+### fzf 履歴検索
+
+`Ctrl+R` を押すことで、コマンド履歴をファジー検索できます。fzfを使った履歴検索機能が自動的に設定されます。
+
+- **使い方**: コマンドライン上で `Ctrl+R` を押す
+- **検索**: 入力した文字列で履歴を絞り込み
+- **選択**: ↑↓ キーで選択、Enter で確定
+
 ## インストールされるツール
 
 ### 基本パッケージ（cloud-init経由）
@@ -87,6 +97,7 @@ exec bash
 - Node.js 22
 - Google Cloud SDK
 - Firebase Tools
+- fzf (fuzzy finder for history search)
 
 ## ファイル構成
 
