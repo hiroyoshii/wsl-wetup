@@ -7,6 +7,7 @@
     "terraform@latest",
     "google-cloud-sdk@latest",
     "starship"
+    "fzf@latest"
   ],
   "shell": {
     "init_hook": [
