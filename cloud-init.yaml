@@ -1,0 +1,21 @@
+#cloud-config
+# WSL初期セットアップ用 cloud-init 設定ファイル
+# chezmoi を使用して dotfiles を適用し、devbox で開発ツールをインストールします
+
+users:
+  - name: hiroaki
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+
+package_update: true
+
+packages:
+  - git
+  - curl
+  - unzip
+
+runcmd:
+  # chezmoi をインストール
+  - sudo sh -c "$(curl -fsLS get.chezmoi.io)" -- -b /usr/local/bin
+  # chezmoi で dotfiles を適用（リポジトリを指定）
+  - chezmoi init --apply https://github.com/hiroyoshii/wsl-wetup.git

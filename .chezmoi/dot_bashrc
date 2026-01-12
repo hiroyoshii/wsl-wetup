@@ -1,0 +1,35 @@
+# ~/.bashrc: executed by bash(1) for non-login shells.
+
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+# devbox global shellenv の設定
+# devbox がインストールされている場合のみ実行
+if command -v devbox >/dev/null 2>&1; then
+  eval "$(devbox global shellenv)"
+fi
+
+# 基本的な環境変数
+export EDITOR=vi
+export VISUAL=vi
+
+# 履歴設定
+HISTCONTROL=ignoreboth
+HISTSIZE=1000
+HISTFILESIZE=2000
+shopt -s histappend
+
+# カラー対応
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias grep='grep --color=auto'
+fi
+
+# 便利なエイリアス
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
