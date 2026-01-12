@@ -16,12 +16,14 @@ fi
 # fzf がインストールされている場合、履歴検索を有効化
 if command -v fzf >/dev/null 2>&1; then
   # Ctrl+R で履歴検索
+  # \C-x1\e^\er: 現在の行をクリアしてカスタム関数を呼び出すためのキーシーケンス
   bind '"\C-r": "\C-x1\e^\er"'
   bind -x '"\C-x1": __fzf_history'
   
   __fzf_history() {
     local selected
-    selected=$(history | sort -r -k1,1n | awk '{$1=""; print substr($0,2)}' | awk '!seen[$0]++' | fzf --tac --no-sort --query "$READLINE_LINE")
+    # 履歴を逆順で取得し、重複を除去してfzfに渡す
+    selected=$(history | tac | awk '!seen[$0]++ {print substr($0, 8)}' | fzf --no-sort --query "$READLINE_LINE")
     READLINE_LINE="${selected}"
     READLINE_POINT=${#READLINE_LINE}
   }
