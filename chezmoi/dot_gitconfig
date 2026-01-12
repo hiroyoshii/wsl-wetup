@@ -1,0 +1,31 @@
+[user]
+    name = hiroyoshii
+    email = orient110yh@gmail.com
+
+[core]
+    editor = vi
+    autocrlf = input
+
+[color]
+    ui = auto
+
+[init]
+    defaultBranch = main
+
+[pull]
+    ff = only
+
+[push]
+    default = simple
+
+[fetch]
+    prune = true
+
+[merge]
+    conflictstyle = zdiff3
+
+[rebase]
+    autosquash = true
+
+[rerere]
+    enabled = true
