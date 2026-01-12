@@ -1,14 +1,28 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/main/.schema/devbox.schema.json",
-  "packages": [
-    "go@1.25",
-    "nodejs@22",
-    "firebase-tools",
-    "terraform@latest",
-    "google-cloud-sdk@latest",
-    "starship",
-    "fzf@latest"
-  ],
+  "packages": {
+    "go": {
+      "version": "1.25"
+    },
+    "nodejs": {
+      "version": "22"
+    },
+    "firebase-tools": {
+      "version": "latest"
+    },
+    "terraform": {
+      "version": "latest"
+    },
+    "google-cloud-sdk": {
+      "version": "latest"
+    },
+    "starship": {
+      "version": "latest"
+    },
+    "fzf": {
+      "version": "latest"
+    }
+  },
   "shell": {
     "init_hook": [
       "echo 'Devbox global environment loaded.'"

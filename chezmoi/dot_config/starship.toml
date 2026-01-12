@@ -19,10 +19,6 @@ $character
 """
 
 # ---- OS / User / Host --------------------------------------
-[bash]
-# Ctrl+R で Starship の履歴検索を無効にする
-# bashならデフォルトではStarshipがキーを変えることは少ないが念のため
-
 [username]
 show_always = true
 style_user = "bold green"
