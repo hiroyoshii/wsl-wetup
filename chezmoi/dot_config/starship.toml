@@ -2,16 +2,15 @@
 # 高速で見やすいプロンプトを提供
 
 # タイムアウトを短縮してレスポンスを改善
-command_timeout = 500
+command_timeout = 300
 
 # 新しい行を追加して見やすくする
 add_newline = true
 
-# フォーマット設定
+# フォーマット設定 - シンプルで適応的なレイアウト
 format = """
-[┌───────────────────────────────────>](bold green)
-[│](bold green)$directory$git_branch$git_status$golang$nodejs$python$terraform
-[└─>](bold green) """
+$directory$git_branch$git_status$golang$nodejs$python$terraform
+$character"""
 
 [directory]
 truncation_length = 3
