@@ -7,9 +7,6 @@
     "nodejs": {
       "version": "22"
     },
-    "firebase-tools": {
-      "version": "latest"
-    },
     "terraform": {
       "version": "latest"
     },

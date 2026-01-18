@@ -43,3 +43,7 @@ DEVBOX_PREFER_IPV4=1 devbox global update || \
     echo "devbox global update skipped (likely not logged in)"
 
 echo "devbox setup complete!"
+
+mkdir -p ~/.npm-global
+npm config set prefix ~/.npm-global
+npm install -g firebase-tools@latest
